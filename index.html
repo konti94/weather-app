@@ -1,13 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather App</title>
+    <title>Időjárás előrejelzés</title>
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <h1>Weather App</h1>
+    <div>
+        <h1>Időjárás előrejelzés</h1>
+        <form id="search" action="submit">
+            <label for="cities">Város</label>
+            <select name="cities" id="cities">
+                <option value="Budapest">Budapest</option>
+                <option value="Győr">Győr</option>
+                <option value="Debrecen">Debrecen</option>
+                <option value="Miskolc">Miskolc</option>
+                <option value="Pécs">Pécs</option>
+                <option value="Sopron">Sopron</option>
+                <option value="Szeged">Szeged</option>
+                <option value="Gyékényes">Gyékényes</option>
+            </select>
+            <button type="submit">Lekérdezés</button>
+        </form>
+        <section id="informations">
+            <h2>Információk</h2>
+            <div id="weather-data-1">
+                <p>2022.11.19. 11:00</p>
+                <p>Budapest</p>
+                <p>Koordináták</p>
+                <p>15 C</p>
+                <p>Nyomás érték</p>
+                <p>Páratartalom</p>
+                <p>Szélirány és erősség</p>
+                <p>Csapadék</p>
+                <p>Felhőzet</p>
+            </div>
+        </section>
+    </div>
+
     <script src="./app.js"></script>
 </body>
 </html>
