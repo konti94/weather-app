@@ -1,1 +1,206 @@
-// Css
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Poppins:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
+
+
+:root {
+    --bg-main: rgb(86,78,255);
+    --bg-glass-blue: rgba(6, 201, 255, 0.2);
+    --bg-white: rgba(255, 255, 255, 0.6);
+    --text-primary: #28282B;
+    --blue: #7393B3;
+    --white: #fff;
+    --bone-white: #F9F6EE;
+    --off-white: #FAF9F6;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    background: var(--bg-main);
+    background: radial-gradient(circle, rgba(86,78,255,1) 0%, rgba(0,170,251,1) 100%);
+    color: var(--text-primary);
+    font-family: 'Poppins', sans-serif;
+}
+
+.wrapper {
+    background: var(--bg-white);
+    border-radius: 16px;
+    margin: 48px 8px;
+    padding: 24px 16px;
+}
+
+.title {
+    margin-bottom: 16px;
+}
+
+.wrapper label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.custom-select {
+    background-color: var(--bone-white);
+    border: 1px solid var(--off-white);
+    border-radius: 8px;
+    display: inline-block;
+    margin: 0 16px 16px 0;
+    max-width: 260px;
+    min-width: 200px;
+    position: relative;
+    z-index: 10;
+}
+
+.custom-select::after {
+    border-left: 1px solid var(--blue);
+    color: var(--blue);
+    content: '\2228';
+    font-size: 24px;
+    height: 80%;
+    line-height: 32px;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 4px;
+    width: 50px;
+    z-index: -1;
+}
+
+.custom-select select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    color: var(--blue);
+    display: block;
+    font-size: 16px;
+    margin: 0;
+    outline: none;
+    padding: 12px 48px 12px 16px;
+    width: 100%;
+}
+
+.wrapper button {
+    appearance: none;
+    background: var(--bg-glass-blue);
+    border: 1px solid var(--bg-glass-blue);
+    border-radius: 8px;
+    color: var(--bone-white);
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    line-height: 1.33;
+    padding: 8px 24px;
+}
+
+.informations {
+    padding: 0 24px;
+}
+
+.card {
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    background: var(--bg-glass-blue);
+    border: 1px solid var(--bg-glass-blue);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    color: var(--white);
+    padding: 16px;
+}
+
+.card-header {
+    display: flex;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    justify-content: space-between;
+    margin-bottom: 48px;
+}
+
+.img-container {
+    height: 64px;
+    margin-bottom: 24px;
+    width: 64px;
+}
+
+.img-container img {
+    height: 100%;
+    width: 100%;
+}
+
+.city {
+    font-size: 32px;
+}
+
+.temperature {
+    font-size: 48px;
+}
+
+.fa {
+    align-items: center;
+    display: inline-flex;
+    font-size: 24px;
+    height: 24px;
+    justify-content: center;
+    margin-right: 16px;
+    width: 24px;
+}
+
+.details p {
+    align-items: center;
+    display: flex;
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 16px;
+}
+
+.update {
+    color: rgba(255, 255, 255, 0.8);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-style: italic;
+    text-align: right;
+}
+
+@media screen and (min-width: 768px) {
+    .wrapper,
+    .informations {
+        max-width: 600px;
+    }
+
+    .wrapper {
+        margin: 64px auto;
+        padding: 32px 48px;
+    }
+
+    .informations {
+        margin: auto;
+        padding: 0;
+    }
+
+    .card {
+        padding: 24px;
+    }
+
+    .card-header {
+        margin-bottom: 64px;
+    }
+
+    .img-container {
+        height: 128px;
+        width: 128px;
+    }
+
+    .city {
+        font-size: 40px;
+    }
+
+    .details {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 32px;
+    }    
+}

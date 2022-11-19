@@ -5,40 +5,56 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Időjárás előrejelzés</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <div>
-        <h1>Időjárás előrejelzés</h1>
+    <div class="wrapper">
+        <h1 class="title">Időjárás előrejelzés</h1>
         <form id="search" action="submit">
             <label for="cities">Város</label>
-            <select name="cities" id="cities">
-                <option value="Budapest">Budapest</option>
-                <option value="Győr">Győr</option>
-                <option value="Debrecen">Debrecen</option>
-                <option value="Miskolc">Miskolc</option>
-                <option value="Pécs">Pécs</option>
-                <option value="Sopron">Sopron</option>
-                <option value="Szeged">Szeged</option>
-                <option value="Gyékényes">Gyékényes</option>
-            </select>
+            <div class='custom-select'>
+                <select id="cities" name="cities">
+                    <option value="Válasszon" selected>Válasszon...</option>
+                    <option value="Budapest">Budapest</option>
+                    <option value="Győr">Győr</option>
+                    <option value="Debrecen">Debrecen</option>
+                    <option value="Miskolc">Miskolc</option>
+                    <option value="Pécs">Pécs</option>
+                    <option value="Sopron">Sopron</option>
+                    <option value="Szeged">Szeged</option>
+                    <option value="Gyékényes">Gyékényes</option>
+                </select>
+            </div>
             <button type="submit">Lekérdezés</button>
         </form>
-        <section id="informations">
-            <h2>Információk</h2>
-            <div id="weather-data-1">
-                <p>2022.11.19. 11:00</p>
-                <p>Budapest</p>
-                <p>Koordináták</p>
-                <p>15 C</p>
-                <p>Nyomás érték</p>
-                <p>Páratartalom</p>
-                <p>Szélirány és erősség</p>
-                <p>Csapadék</p>
-                <p>Felhőzet</p>
-            </div>
-        </section>
     </div>
+    <section id="informations" class="informations">
+        <div id="weather-data-actual" class="card">
+            <div class="card-header">
+                <div>
+                    <div class="img-container">
+                        <img src="./assets/sun.png" alt="sun" />
+                    </div>
+                    <p class="city">Budapest</p>
+                </div>
+                <p class="temperature">15 &#8451;</p>
+            </div>
+            <div class="details">
+                <div>
+                    <p><i class="fa fa-location-arrow"></i> Koordináták</p>
+                    <p><i class="fa fa-dashboard"></i> Nyomás érték</p>
+                    <p><i class="fa fa-tint"></i> Páratartalom</p>
+                </div>
+                <div>
+                    <p><i class="fa fa-compass"></i> Szélirány és erősség</p>
+                    <p><i class="fa fa-umbrella"></i> Csapadék</p>
+                    <p><i class="fa fa-cloud"></i> Felhőzet</p>
+                </div>
+            </div>
+            <p class="update">Frissítve: <span>2022.11.19. 11:00</span></p>
+        </div>
+    </section>
 
     <script src="./app.js"></script>
 </body>
