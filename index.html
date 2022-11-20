@@ -11,11 +11,11 @@
 <body>
     <div class="wrapper">
         <h1 class="title">Időjárás előrejelzés</h1>
-        <form id="search" action="submit">
+        <form id="search">
             <label for="cities">Város</label>
             <div class='custom-select'>
                 <select id="cities" name="cities">
-                    <option value="Válasszon" selected>Válasszon...</option>
+                    <option value="Válasszon">Válasszon...</option>
                 </select>
             </div>
             <button type="submit">Lekérdezés</button>
@@ -25,26 +25,26 @@
         <div id="weather-data-actual" class="card">
             <div class="card-header">
                 <div>
-                    <div class="img-container">
+                    <div class="img-container" id="weather-icon">
                         <img src="./assets/sun.png" alt="sun" />
                     </div>
-                    <p class="city">Budapest</p>
+                    <p id="city" class="city"></p>
                 </div>
-                <p class="temperature">15 &#8451;</p>
+                <p class="temperature"><span id="temperature"></span> &#8451;</p>
             </div>
             <div class="details">
                 <div>
-                    <p><i class="fa fa-location-arrow"></i> Koordináták</p>
-                    <p><i class="fa fa-dashboard"></i> Nyomás érték</p>
-                    <p><i class="fa fa-tint"></i> Páratartalom</p>
+                    <p><i class="fa fa-location-arrow"></i> lon: <span id="lon" class="margin-left"></span> lat: <span id="lat" class="margin-left"></span></p>
+                    <p><i class="fa fa-dashboard"></i><span id="pressure"></span> hPa</p>
+                    <p><i class="fa fa-tint"></i><span id="humidity"></span> % páratartalom</p>
                 </div>
                 <div>
-                    <p><i class="fa fa-compass"></i> Szélirány és erősség</p>
-                    <p><i class="fa fa-umbrella"></i> Csapadék</p>
-                    <p><i class="fa fa-cloud"></i> Felhőzet</p>
+                    <p><i class="fa fa-compass"></i><span id="windSpeed"></span> km/h irány: <span id="windDirection" class="margin-left"></span> szél</p>
+                    <p><i class="fa fa-umbrella"></i><span id="amountOfRain"></span></p>
+                    <p><i class="fa fa-cloud"></i><span id="description"></span></p>
                 </div>
             </div>
-            <p class="update">Frissítve: <span>2022.11.19. 11:00</span></p>
+            <p class="update">Frissítve: <span id="update"></span></p>
         </div>
     </section>
 

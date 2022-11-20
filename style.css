@@ -150,11 +150,14 @@ html, body {
 }
 
 .details p {
-    align-items: center;
     display: flex;
     font-size: 18px;
     line-height: 1.5;
     margin-bottom: 16px;
+}
+
+.details span[id] {
+    margin-right: 8px;
 }
 
 .update {
@@ -163,6 +166,10 @@ html, body {
     font-size: 14px;
     font-style: italic;
     text-align: right;
+}
+
+.margin-left {
+    margin-left: 8px;
 }
 
 @media screen and (min-width: 768px) {
@@ -202,5 +209,9 @@ html, body {
         display: flex;
         justify-content: space-between;
         margin-bottom: 32px;
-    }    
+    }
+
+    .details div {
+        width: 50%;
+    }
 }
