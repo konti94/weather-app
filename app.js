@@ -64,6 +64,7 @@ async function getWeatherByLocation(url) {
 async function getForecastByLocation(url) {
     const response = await fetch(url);
     const responseData = await response.json();
+    document.getElementById('forecast').innerHTML = '';
 
     responseData.list.forEach(element => {
         if (String(element.dt_txt).substring(11, 13) == '12') {
