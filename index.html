@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <div class="wrapper">
+    <section class="wrapper wrapper--form">
         <h1 class="title">Időjárás előrejelzés</h1>
         <form id="search">
             <label for="cities">Város</label>
@@ -20,14 +20,12 @@
             </div>
             <button type="submit">Lekérdezés</button>
         </form>
-    </div>
+    </section>
     <section id="informations" class="informations">
         <div id="weather-data-actual" class="card">
             <div class="card-header">
                 <div>
-                    <div class="img-container" id="weather-icon">
-                        <img src="./assets/sun.png" alt="sun" />
-                    </div>
+                    <div class="img-container" id="weather-icon"></div>
                     <p id="city" class="city"></p>
                 </div>
                 <p class="temperature"><span id="temperature"></span> &#8451;</p>
@@ -46,6 +44,9 @@
             </div>
             <p class="update">Frissítve: <span id="update"></span></p>
         </div>
+    </section>
+    <section id="forecast-wrapper" class="wrapper wrapper--forecast">
+        <div id="forecast" class="forecast-cards"></div>
     </section>
 
     <script src="./app.js"></script>

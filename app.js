@@ -31,9 +31,11 @@ document.getElementById('search').addEventListener('submit',(event) => {
 
     const apiKey = '46d4b7c5d34fa20f4e66d522546c5d5f';
     let actualCity = getSelectBoxValue('cities')
-    let url = `https://api.openweathermap.org/data/2.5/weather?q=${actualCity}&appid=${apiKey}&units=metric`;
+    let urlWeather = `https://api.openweathermap.org/data/2.5/weather?q=${actualCity}&appid=${apiKey}&units=metric`;
+    let urlForecast = `https://api.openweathermap.org/data/2.5/forecast?q=${actualCity}&appid=${apiKey}&units=metric`;
 
-    getWeatherByLocation(url);
+    getWeatherByLocation(urlWeather);
+    getForecastByLocation(urlForecast);
 });
 
 function getSelectBoxValue(id) {
@@ -41,23 +43,38 @@ function getSelectBoxValue(id) {
 }
 
 async function getWeatherByLocation(url) {
-     
     const response = await fetch(url);
     const responseData = await response.json();
 
     city = String(responseData.name);
-    temperature = Math.floor(responseData.main.temp);
+    temperature = Math.round(responseData.main.temp);
     lon = responseData.coord.lon;
     lat = responseData.coord.lat;
     pressure = responseData.main.pressure;
     humidity = responseData.main.humidity;
-    windSpeed = Math.floor(responseData.wind.speed * 3.6);
+    windSpeed = Math.round(responseData.wind.speed * 3.6);
     calculateWindDirection(responseData.wind.deg);
     calculateRainfall(responseData);
     description = responseData.weather[0].description;
     update = formatDateTime(responseData.dt);
 
     renderWeatherInformations();
+}
+
+async function getForecastByLocation(url) {
+    const response = await fetch(url);
+    const responseData = await response.json();
+
+    responseData.list.forEach(element => {
+        if (String(element.dt_txt).substring(11, 13) == '12') {
+            let dayname = new Date(element.dt * 1000).toLocaleDateString("hu", {
+                weekday: "long",
+            });
+            let temperature = Math.round(element.main.temp);
+            let desc = element.weather[0].description;
+            renderForecast(desc, capitalize(dayname), temperature);
+        }
+    });
 }
 
 function calculateWindDirection(windDeg) {
@@ -75,7 +92,7 @@ function calculateRainfall(responseData) {
 }
 
 function renderWeatherInformations() {
-    createWeatherIcon();
+    document.getElementById('weather-icon').innerHTML = createWeatherIcon(description);
     document.getElementById('city').innerHTML = city;
     document.getElementById('temperature').innerHTML = temperature;
     document.getElementById('lon').innerHTML = lon;
@@ -97,11 +114,30 @@ function formatDateTime(unixTimeStamp) {
     return dateFormat;
 }
 
-function createWeatherIcon() {
-    if (description.includes('cloud')) document.getElementById('weather-icon').innerHTML = `<img src="./assets/cloud.png" alt="cloud" />`;
-    if (description.includes('rain')) document.getElementById('weather-icon').innerHTML = `<img src="./assets/rain.png" alt="rain" />`;
-    if (description.includes('snow')) document.getElementById('weather-icon').innerHTML = `<img src="./assets/snow.png" alt="snow" />`;
-    if (description.includes('freeze')) document.getElementById('weather-icon').innerHTML = `<img src="./assets/snowflake.png" alt="snowflake" />`;
-    if (description.includes('storm')) document.getElementById('weather-icon').innerHTML = `<img src="./assets/storm.png" alt="storm" />`;
-    if (description.includes('sun')) document.getElementById('weather-icon').innerHTML = `<img src="./assets/sun.png" alt="sun" />`;
+function createWeatherIcon(data) {
+    let img = `<img src="./assets/sun.png" alt="sun" />`;
+
+    if (data.includes('cloud')) img = `<img src="./assets/cloud.png" alt="cloud" />`;
+    if (data.includes('rain')) img = `<img src="./assets/rain.png" alt="rain" />`;
+    if (data.includes('snow')) img = `<img src="./assets/snow.png" alt="snow" />`;
+    if (data.includes('freeze')) img = `<img src="./assets/snowflake.png" alt="snowflake" />`;
+    if (data.includes('storm')) img = `<img src="./assets/storm.png" alt="storm" />`;
+
+    return img;
+}
+
+function renderForecast(desc, dayname, temperature) {
+    document.getElementById('forecast-wrapper').classList.add('visible');
+    let icon = createWeatherIcon(desc);
+    document.getElementById('forecast').innerHTML += `
+        <div class="forecast-card">
+            <div id="forecast-icon" class="forecast-icon">${icon}</div>
+            <p id="forecast-day">${dayname}</p>
+            <p id="forecast-temperature">${temperature} &#8451;</p>
+        </div>
+    `;
+}
+
+function capitalize(string) {
+    return string && string[0].toUpperCase() + string.slice(1);
 }

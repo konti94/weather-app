@@ -5,6 +5,7 @@
     --bg-main: rgb(86,78,255);
     --bg-glass-blue: rgba(6, 201, 255, 0.2);
     --bg-white: rgba(255, 255, 255, 0.6);
+    --bg-white-8: rgba(255, 255, 255, 0.8);
     --text-primary: #28282B;
     --blue: #7393B3;
     --white: #fff;
@@ -26,10 +27,22 @@ html, body {
 }
 
 .wrapper {
-    background: var(--bg-white);
     border-radius: 16px;
-    margin: 48px 8px;
+    margin: 48px 16px;
     padding: 24px 16px;
+}
+
+.wrapper--form {
+    background: var(--bg-white);
+}
+
+.wrapper--forecast {
+    background: var(--bg-white-8);
+    display: none;
+}
+
+.wrapper--forecast.visible {
+    display: block;
 }
 
 .title {
@@ -98,7 +111,7 @@ html, body {
 }
 
 .informations {
-    padding: 0 24px;
+    padding: 0 16px;
 }
 
 .card {
@@ -172,10 +185,31 @@ html, body {
     margin-left: 8px;
 }
 
+.forecast-card {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.forecast-icon {
+    height: 48px;
+    margin-bottom: 8px;
+    width: 48px;
+}
+
+.forecast-icon img {
+    height: 100%;
+    width: 100%;
+}
+
+.forecast-card p {
+    font-size: 20px;
+}
+
 @media screen and (min-width: 768px) {
     .wrapper,
     .informations {
-        max-width: 600px;
+        max-width: 700px;
     }
 
     .wrapper {
@@ -213,5 +247,35 @@ html, body {
 
     .details div {
         width: 50%;
+    }
+
+    .forecast-cards {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .forecast-card {
+        flex-direction: column;
+    }
+
+    .forecast-card p:first-child {
+        order: 1;
+    }
+
+    .forecast-icon {
+        margin-top: 8px;
+        order: 2;
+    }
+
+    .forecast-card p:last-child {
+        order: 3;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .wrapper,
+    .informations {
+        max-width: 800px;
     }
 }
